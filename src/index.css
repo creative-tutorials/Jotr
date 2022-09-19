@@ -1,0 +1,21 @@
+:root {
+  --light-background: rgb(240, 240, 245);
+  --header-bg: rgb(255, 255, 255);
+  --header-dark: rgb(42, 42, 74);
+  --dark-background: rgb(26, 26, 60);
+  --light-border-color: rgb(229, 229, 229);
+  --light-text-color: rgb(117, 80, 249);
+  --dark-border-color: rgb(53, 53, 83);
+  --dark-text-color: #c3cfe6;
+  --dark-component-background: rgb(42, 42, 74);
+  --font-fam: Poppins, sans-serif;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: var(--font-fam);
+  background: var(--light-background);
+}
