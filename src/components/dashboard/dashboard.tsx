@@ -5,6 +5,7 @@ import { Link, Form } from "react-router-dom";
 import { useState, useRef } from "react";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 function DashboardComponent() {
+  /* A hook that is used to control the fullscreen state. */
   const handle = useFullScreenHandle();
   const [isDarkMode, setisDarkMode] = useState(false);
   const [users, setusers] = useState(10000);
