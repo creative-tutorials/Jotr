@@ -35,6 +35,7 @@ header {
   border: 1px solid var(--light-border-color);
   outline: none;
   color: rgb(120, 120, 120);
+  font-family: 'Poppins', sans-serif;
 }
 .lft-input {
   position: relative;
@@ -245,7 +246,9 @@ th {
 }
 .DashboardComponent.dark .lft-input input {
   border: 1px solid var(--dark-border-color);
-  color: rgb(120, 120, 120);
+  color: var(--dark-text-color);
+  background-color: transparent;
+  font-family: 'Poppins', sans-serif;
 }
 .DashboardComponent.dark .hd-left .lft-logo h2 {
   color: var(--dark-text-color);

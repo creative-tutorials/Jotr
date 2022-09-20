@@ -1,44 +1,104 @@
+import { TableView } from "../views/tableView";
 import avatar from "../../assets/avatar.avif";
 import "../../styles/dashstyle.css";
 import abbreviate from "number-abbreviate";
-import { Link, Form } from "react-router-dom";
-import { useState, useRef } from "react";
+import { Link} from "react-router-dom";
+import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 function DashboardComponent() {
-  /* A hook that is used to control the fullscreen state. */
-  const handle = useFullScreenHandle();
+  const handle =
+    useFullScreenHandle(); /* A hook that is used to control the fullscreen state. */
   const [isDarkMode, setisDarkMode] = useState(false);
   const [users, setusers] = useState(10000);
   const [profit, setprofit] = useState(1000);
   const [cost, setcost] = useState(200);
-  const dashCompnt: any = useRef();
+  const [renderPage, setrenderPage] = useState(false);
+  const [renderContent, setrenderContent] = useState(false);
   const changeTheme = () => {
     const body: any = document.querySelector("body");
-    const fuls: any = document.querySelector('.fullscreen');
-    const dashCompnts = dashCompnt.current;
+    const fuls: any = document.querySelector(".fullscreen");
+    /* Checking if the value of isDarkMode is false. */
     if (!isDarkMode) {
       setisDarkMode(true);
     } else {
       setisDarkMode(false);
     }
-    console.log(isDarkMode ? "Dark Mode" : "Normal Mode");
+    console.log(isDarkMode ? "Light Mode" : "Dark Mode");
     isDarkMode
-      ? (body.style.backgroundColor = "rgb(26, 26, 60)")
-      : (body.style.backgroundColor = "rgb(240, 240, 245)");
+      ? (body.style.backgroundColor = "rgb(240, 240, 245)")
+      : (body.style.backgroundColor = "rgb(26, 26, 60)");
     isDarkMode
-      ? (fuls.style.backgroundColor = "rgb(26, 26, 60)")
-      : (fuls.style.backgroundColor = "rgb(240, 240, 245)");
+      ? (fuls.style.backgroundColor = "rgb(240, 240, 245)")
+      : (fuls.style.backgroundColor = "rgb(26, 26, 60)");
+    isDarkMode
+      ? localStorage.setItem("theme", "Light Mode")
+      : localStorage.setItem("theme", "Dark Mode");
   };
   const abbreviate_user = abbreviate(users);
   const abbreviate_profit = abbreviate(profit);
   const abbreviate_cost = abbreviate(cost);
+  useEffect(() => {
+    renderPage ? RenderContent() : null;
+    renderContent ? FetchAPIContent() : null;
+  }, [renderContent]);
+
+  const res = {
+    name: "Test",
+  };
+
+  let letter: any = useMemo(() => res, [res]);
+
+  const RenderContent = () => {
+    const getTheme = localStorage.getItem("theme");
+    const body: any = document.querySelector("body");
+    const fuls: any = document.querySelector(".fullscreen");
+    if (getTheme === "Light Mode") {
+      setisDarkMode(false);
+      body.style.backgroundColor = "rgb(240, 240, 245)";
+      fuls.style.backgroundColor = "rgb(240, 240, 245)";
+    } else {
+      setisDarkMode(true);
+      body.style.backgroundColor = "rgb(26, 26, 60)";
+      fuls.style.backgroundColor = "rgb(26, 26, 60)";
+    }
+  };
+  const FetchAPIContent = useCallback(async () => {
+    console.log("Fetching APIContent...");
+    try {
+      const response = await fetch("http://localhost:5301/app", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          apikey:
+            "PN2IfKkVxUzYIQWbwgN97OrIJ9aMZczNM4z5viFayfMv9POEtsSsHcIB3UORlald",
+        },
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log("resut", result);
+        letter = result;
+        console.log("letter", letter);
+        let string = JSON.stringify(letter);
+        localStorage.setItem("items", JSON.stringify(letter));
+        const x = localStorage.getItem("items")
+        console.log('x', JSON.parse(x))
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  }, []);
+  const Load = () => {
+    setrenderPage(true);
+    setrenderContent(true);
+  };
   return (
     <FullScreen handle={handle}>
       <div
         className={
-          isDarkMode ? "DashboardComponent" : "DashboardComponent dark"
+          isDarkMode ? "DashboardComponent dark" : "DashboardComponent"
         }
-        ref={dashCompnt}
+        onLoad={Load}
       >
         <header>
           <div className="hd-top">
@@ -54,7 +114,7 @@ function DashboardComponent() {
             <div className="hd-right">
               <div className="f6">
                 <span className="icon" onClick={changeTheme}>
-                  <i className="bx bx-moon"></i>
+                  <i className={isDarkMode ? "bx bx-sun" : "bx bx-moon"}></i>
                 </span>
                 <span className="icon" onClick={handle.enter}>
                   <i className="bx bx-exit-fullscreen"></i>
@@ -139,52 +199,7 @@ function DashboardComponent() {
               </div>
             </div>
             <div className="n5">
-              <table>
-                <thead>
-                  <tr role={"row"}>
-                    <th>App ID</th>
-                    <th>App name</th>
-                    <th>Released Date</th>
-                    <th>Domain URL</th>
-                    <th>Host URL</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div className="m5-1">
-                        <p>918271</p>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="m5-1">
-                        <p>reactapp</p>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="m5-1">
-                        <p>June 2010</p>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="m5-1 m5-link">
-                        <Link to="/">http://bit.ly</Link>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="m5-1 m5-link">
-                        <Link to="/">http://localhost:3000</Link>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="m5-1 m5-success">
-                        <p>Shipped</p>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+              <TableView data={localStorage.getItem("items")}/>
             </div>
           </div>
         </main>
