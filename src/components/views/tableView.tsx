@@ -1,12 +1,61 @@
 import React from "react";
-import { Link} from "react-router-dom";
-import { useEffect } from "react";
-export function TableView(props:any) {
-    useEffect(() => {
-        
-    }, [props])
-    
-    const lol = JSON.parse(props.data)
+import { useEffect, useState, useCallback, useMemo, useRef } from "react";
+export function TableView(props: any) {
+  const [loadComponent, setloadComponent] = useState(false);
+  let isLoaded = true;
+  useEffect(() => {
+    if (!isLoaded) renderUseState();
+    else null;
+    return () => {
+      isLoaded = false;
+    };
+  }, [props]);
+
+  const returendData = useMemo(() => props.data, [props.data]);
+
+  const tableBody: any = useRef();
+
+  const renderUseState = useCallback(() => {
+    const createel = document.createElement("tr");
+    console.log(JSON.parse(returendData));
+    const xa = JSON.parse(props.data);
+    const newMap = xa.map((items: any) => {
+      console.log(items);
+      createel.innerHTML = `
+      <td id="appid">
+        <div class="m5-1">
+          <p>${items.appid}</p>
+        </div>
+      </td>
+      <td id="appname">
+        <div class="m5-1">
+          <p>${items.appname}</p>
+        </div>
+      </td>
+      <td id="releasedDate">
+        <div class="m5-1">
+          <p>${items.releasedDate}</p>
+        </div>
+      </td>
+      <td id="domainURL">
+        <div class="m5-1 m5-link">
+          <Link to="/">${items.domainURL}</Link>
+        </div>
+      </td>
+      <td id="hostURL">
+        <div class="m5-1 m5-link">
+          <Link to="/">${items.hostURL}</Link>
+        </div>
+      </td>
+      <td>
+        <div class="m5-1 m5-success">
+          <p>${items.status}</p>
+        </div>
+      </td>`;
+    });
+    tableBody.current.appendChild(createel);
+  }, []);
+
   return (
     <table>
       <thead>
@@ -19,40 +68,7 @@ export function TableView(props:any) {
           <th>Status</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td id="appid">
-            <div className="m5-1">
-              <p>{lol[0].appid}</p>
-            </div>
-          </td>
-          <td id="appname">
-            <div className="m5-1">
-              <p>reactapp</p>
-            </div>
-          </td>
-          <td id="releasedDate">
-            <div className="m5-1">
-              <p>June 2010</p>
-            </div>
-          </td>
-          <td id="domainURL">
-            <div className="m5-1 m5-link">
-              <Link to="/">http://bit.ly</Link>
-            </div>
-          </td>
-          <td id="hostURL">
-            <div className="m5-1 m5-link">
-              <Link to="/">http://localhost:3000</Link>
-            </div>
-          </td>
-          <td>
-            <div className="m5-1 m5-success">
-              <p>Shipped</p>
-            </div>
-          </td>
-        </tr>
-      </tbody>
+      <tbody ref={tableBody}></tbody>
     </table>
   );
 }

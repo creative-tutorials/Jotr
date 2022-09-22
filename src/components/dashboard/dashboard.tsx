@@ -2,7 +2,7 @@ import { TableView } from "../views/tableView";
 import avatar from "../../assets/avatar.avif";
 import "../../styles/dashstyle.css";
 import abbreviate from "number-abbreviate";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 function DashboardComponent() {
@@ -63,7 +63,7 @@ function DashboardComponent() {
     }
   };
   const FetchAPIContent = useCallback(async () => {
-    console.log("Fetching APIContent...");
+    console.log("Fetched APIContent...");
     try {
       const response = await fetch("http://localhost:5301/app", {
         method: "GET",
@@ -76,13 +76,10 @@ function DashboardComponent() {
 
       if (response.ok) {
         const result = await response.json();
-        console.log("resut", result);
         letter = result;
-        console.log("letter", letter);
-        let string = JSON.stringify(letter);
         localStorage.setItem("items", JSON.stringify(letter));
-        const x = localStorage.getItem("items")
-        console.log('x', JSON.parse(x))
+        const x = localStorage.getItem("items");
+        // console.log();
       }
     } catch (err) {
       console.error(err);
@@ -199,7 +196,7 @@ function DashboardComponent() {
               </div>
             </div>
             <div className="n5">
-              <TableView data={localStorage.getItem("items")}/>
+              <TableView data={localStorage.getItem("items")} />
             </div>
           </div>
         </main>

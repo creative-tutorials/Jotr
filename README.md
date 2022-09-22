@@ -1,9 +1,8 @@
-# tunnel-sharing
+# JOTR
 
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/creative-tutorials/tunnel-sharing) [![Discord-Connect](https://img.shields.io/badge/discord-JoinUs-green?logo=discord&style=plastic)](https://discordapp.com) ![License](https://img.shields.io/github/license/creative-tutorials/tunnel-sharing?color=blue)
 
-![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/creative-tutorials/tunnel-sharing) [![Discord-Connect](https://img.shields.io/badge/discord-JoinUs-green?logo=discord&style=plastic)](https://discordapp.com)
-
-A simple tunnel sharing application that allows you to share your localhost live...
+Jotr a simple tunnel sharing application that allows you to share your localhost live...
 
 ## Description
 
@@ -22,7 +21,6 @@ const connect = () => {
 
 The `connect` method is used to connect to the server, when connecting to the server we're also making a request to the server
 
-
 ## Features
 
 - Includes support for different types of requests
@@ -31,13 +29,25 @@ The `connect` method is used to connect to the server, when connecting to the se
 - server status - shows when the server is running
 - support domain URL - for the host request -> routes you to the live tunnel (default is "http://localhost:{YOUR_PORT}")
 
+## Technologies
+
+Jotr is built under cool Technologies and we would love to share a quick taste of what the technologies Jotr uses
+
+- [React](https://reactjs.org/)
+- [Nodejs](https://nodejs.org/en/)
+- [Firebase](https://firebase.google.com/)
+- [MongoDB](https://www.mongodb.com)
+
 ## Usage
 
-* Install
+- Install
+
 ```bash
 yarn add
 ```
+
 OR
+
 ```bash
 npm install
 ```
