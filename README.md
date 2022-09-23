@@ -19,7 +19,7 @@ const connect = () => {
 };
 ```
 
-The `connect` method is used to connect to the server, when connecting to the server we're also making a request to the server
+The `connect` function is used to connect to the server, when connecting to the server we're also making a request to the server
 
 ## Features
 
