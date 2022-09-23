@@ -14,6 +14,7 @@ function DashboardComponent() {
   const [cost, setcost] = useState(200);
   const [renderPage, setrenderPage] = useState(false);
   const [renderContent, setrenderContent] = useState(false);
+  const [dataSet, setdataSet] = useState(false);
   const changeTheme = () => {
     const body: any = document.querySelector("body");
     const fuls: any = document.querySelector(".fullscreen");
@@ -42,9 +43,11 @@ function DashboardComponent() {
     renderContent ? FetchAPIContent() : null;
   }, [renderContent]);
 
-  const res = {
-    name: "Test",
-  };
+  const res = [
+    {
+      name: "Test",
+    },
+  ];
 
   let letter: any = useMemo(() => res, [res]);
 
@@ -78,8 +81,7 @@ function DashboardComponent() {
         const result = await response.json();
         letter = result;
         localStorage.setItem("items", JSON.stringify(letter));
-        const x = localStorage.getItem("items");
-        // console.log();
+        setdataSet(true);
       }
     } catch (err) {
       console.error(err);
@@ -196,7 +198,11 @@ function DashboardComponent() {
               </div>
             </div>
             <div className="n5">
-              <TableView data={localStorage.getItem("items")} />
+              {
+              dataSet
+              ? <TableView data={localStorage.getItem("items")} />
+              : null
+              }
             </div>
           </div>
         </main>

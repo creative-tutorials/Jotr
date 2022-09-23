@@ -211,10 +211,9 @@ table {
   width: 100%;
   color: rgb(55, 55, 55);
 }
-
 td,
 th {
-  border: 1px solid #dddddd;
+  border: 1px solid #495367;
   text-align: left;
   padding: 8px;
 }

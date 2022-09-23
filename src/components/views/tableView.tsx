@@ -1,7 +1,8 @@
 import React from "react";
+import ReactDOM from "react-dom/client";
+import Elem from "./Element";
 import { useEffect, useState, useCallback, useMemo, useRef } from "react";
 export function TableView(props: any) {
-  const [loadComponent, setloadComponent] = useState(false);
   let isLoaded = true;
   useEffect(() => {
     if (!isLoaded) renderUseState();
@@ -14,52 +15,41 @@ export function TableView(props: any) {
   const returendData = useMemo(() => props.data, [props.data]);
 
   const tableBody: any = useRef();
+  // console.log(data);
+  // const mappedData = data.map((items: any) => {
+  //   console.log(items);
+  // });
 
   const renderUseState = useCallback(() => {
-    const createel = document.createElement("tr");
-    console.log(JSON.parse(returendData));
-    const xa = JSON.parse(props.data);
-    const newMap = xa.map((items: any) => {
-      console.log(items);
-      createel.innerHTML = `
-      <td id="appid">
-        <div class="m5-1">
-          <p>${items.appid}</p>
-        </div>
-      </td>
-      <td id="appname">
-        <div class="m5-1">
-          <p>${items.appname}</p>
-        </div>
-      </td>
-      <td id="releasedDate">
-        <div class="m5-1">
-          <p>${items.releasedDate}</p>
-        </div>
-      </td>
-      <td id="domainURL">
-        <div class="m5-1 m5-link">
-          <Link to="/">${items.domainURL}</Link>
-        </div>
-      </td>
-      <td id="hostURL">
-        <div class="m5-1 m5-link">
-          <Link to="/">${items.hostURL}</Link>
-        </div>
-      </td>
-      <td>
-        <div class="m5-1 m5-success">
-          <p>${items.status}</p>
-        </div>
-      </td>`;
+    const data = JSON.parse(returendData);
+    const mappedData = data.map((items: any) => {
+      ReactDOM.createRoot(
+        document.querySelector("tbody") as HTMLElement
+      ).render(
+        <React.StrictMode>
+          <Elem
+            appName={items.appname}
+            appid={items.appid}
+            released={items.releasedDate}
+            domainURL={items.domainURL}
+            Port={items.Port}
+            status={items.status}
+          />
+        </React.StrictMode>
+      );
     });
-    tableBody.current.appendChild(createel);
+    if (!data) {
+      console.log("failed to fetch props data");
+    } else {
+      console.log("fetched props data");
+      console.log(data);
+    }
   }, []);
 
   return (
     <table>
       <thead>
-        <tr role={"row"}>
+        <tr role={"row"} className="row">
           <th>App ID</th>
           <th>App name</th>
           <th>Released Date</th>
