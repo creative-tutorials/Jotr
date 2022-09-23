@@ -26,7 +26,7 @@ The `connect` function is used to connect to the server, when connecting to the 
 - Includes support for different types of requests
 - application status that shows when the app is shipped successfully
 - unique app id (your app id is unique and cannot be changed, also cannot be used by anyone)
-- server status - shows when the server is running
+- server status - shows when the server is running `(Admin Previlage only)`
 - support domain URL - for the host request -> routes you to the live tunnel (default is "http://localhost:{YOUR_PORT}")
 
 ## Technologies
