@@ -98,6 +98,9 @@ header .hd-btm .hd-btm-links {
   font-size: 1.3rem;
   margin-right: 5px;
 }
+main {
+  margin-top: 140px;
+}
 .main-top {
   margin-top: 90px;
   padding: 15px 40px;
@@ -291,4 +294,9 @@ th {
 .DashboardComponent.dark .m5-success p {
   background-color: rgba(15, 164, 72, 0.453);
   color: rgb(43, 241, 119);
+}
+.DashboardComponent.dark .main-top .y-content .cxt {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--dark-text-color);
 }
