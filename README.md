@@ -35,7 +35,7 @@ Jotr a simple tunnel sharing application that allows you to share your localhost
 })();
 ```
 
-The `connect` function is used to connect to the server, when connecting to the server we're also making a request to the server
+The `tunnel.url` is the URL assigned to the port of the localhost engine, by default the domain is localhost, all user needs is to apply their port and wait for it to tunnel and server your file to you.
 
 ## Features
 
@@ -54,16 +54,5 @@ Jotr is built under cool Technologies and we would love to share a quick taste o
 - [Firebase](https://firebase.google.com/)
 - [MongoDB](https://www.mongodb.com)
 
-## Usage
 
-- Install
-
-```bash
-yarn add
-```
-
-OR
-
-```bash
-npm install
-```
+Copyright &copy; 2022 - creative-tutorials All rights reserved
