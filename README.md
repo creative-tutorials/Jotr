@@ -55,4 +55,4 @@ Jotr is built under cool Technologies and we would love to share a quick taste o
 - [MongoDB](https://www.mongodb.com)
 
 
-Copyright &copy; 2022 - creative-tutorials All rights reserved
+Copyright &copy; 2022 - [creative-tutorials](https://github.com/creative-tutorials) All rights reserved
