@@ -1,3 +1,8 @@
+import { HeaderBottom } from "../views/HeaderBottom";
+import { HeaderIcons } from "../views/HeaderIcons";
+import { FlexDiv } from "../views/flexDiv";
+import { FullScreenfunction } from "../functions/fullScreenfunction";
+import { ChangeTheme } from "../functions/ChangeTheme";
 import { TableView } from "../views/tableView";
 import avatar from "../../assets/avatar.avif";
 import "../../styles/dashstyle.css";
@@ -73,7 +78,7 @@ function DashboardComponent() {
         headers: {
           "Content-Type": "application/json",
           apikey:
-            "PN2IfKkVxUzYIQWbwgN97OrIJ9aMZczNM4z5viFayfMv9POEtsSsHcIB3UORlald",
+          import.meta.env.VITE_CUSTOM_API_KEY,
         },
       });
 
@@ -112,40 +117,16 @@ function DashboardComponent() {
             </div>
             <div className="hd-right">
               <div className="f6">
-                <span className="icon" onClick={changeTheme}>
-                  <i className={isDarkMode ? "bx bx-sun" : "bx bx-moon"}></i>
-                </span>
-                <span className="icon" onClick={handle.enter}>
-                  <i className="bx bx-exit-fullscreen"></i>
-                </span>
-                <span className="icon">
-                  <i className="bx bx-bell"></i>
-                </span>
-                <span className="icon">
-                  <i className="bx bx-message-square"></i>
-                </span>
-                <span className="avr">
-                  <img src={avatar} alt="avatar" width={40} height={40} />
-                </span>
+                <ChangeTheme
+                  changeTheme={changeTheme}
+                  isDarkMode={isDarkMode}
+                />
+                <FullScreenfunction Mode={handle.enter} />
+                <HeaderIcons avatar={avatar} />
               </div>
             </div>
           </div>
-          <div className="hd-btm">
-            <div className="hd-btm-links">
-              <Link to="/">
-                <i className="bx bxs-dashboard"></i> Dashboard
-              </Link>
-              <Link to="/">
-                <i className="bx bxs-zap"></i> Landing Page
-              </Link>
-              <Link to="/users">
-                <i className="bx bx-user"></i> Users
-              </Link>
-              <Link to="/add">
-                <i className="bx bxs-folder-plus"></i> Add
-              </Link>
-            </div>
-          </div>
+          <HeaderBottom Link={Link}/>
         </header>
         <main>
           <div className="main-top">
@@ -166,43 +147,11 @@ function DashboardComponent() {
                 <h3>{abbreviate_cost}</h3>
               </div>
             </div>
-            <div className="flex-n9">
-              <div className="n9">
-                <div className="n9-cols">
-                  <div className="n9-cols-left">
-                    <div className="_txt">Device</div>
-                    <div className="devices_list">
-                      <span id="devices">
-                        <i className="bx bx-mobile-alt"></i>
-                        <span id="deviceCategory">Mobile</span>
-                      </span>
-                      <span id="devices">
-                        <i className="bx bx-desktop"></i>
-                        <span id="deviceCategory">Desktops</span>
-                      </span>
-                      <span id="devices">
-                        <i className="bx bx-devices"></i>
-                        <span id="deviceCategory">Tablets</span>
-                      </span>
-                    </div>
-                  </div>
-                  <div className="n9-cols-right">
-                    <div className="_txt">Usage</div>
-                    <div className="usage_list">
-                      <span id="useAge">{0}</span>
-                      <span id="useAge">{0}</span>
-                      <span id="useAge">{0}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <FlexDiv MobileUsage={0} DesktopUsage={0} TabletUsage={0} />
             <div className="n5">
-              {
-              dataSet
-              ? <TableView data={localStorage.getItem("items")} />
-              : null
-              }
+              {dataSet ? (
+                <TableView data={localStorage.getItem("items")} />
+              ) : null}
             </div>
           </div>
         </main>
