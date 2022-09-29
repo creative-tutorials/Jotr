@@ -6,7 +6,7 @@ Jotr a simple tunnel sharing application that allows you to share your localhost
 
 ## Description
 
-**JOTR** is a simple application that allows you to share your localhost, live for people to see, this app solves the issue where you want a developer to view your app but you don't want to pay for hosting, **JOTR** helps you simply convert your localhost into a secured tunnel that can be viewed live for others to see
+**JOTR** is a simple application that allows you to share your localhost, live for people to see, this app solves the issue where you want someone to view your app but you don't want to pay for hosting, **JOTR** helps you simply convert your localhost into a secured tunnel that can be viewed live for others to see
 
 ## Example
 
@@ -35,7 +35,7 @@ Jotr a simple tunnel sharing application that allows you to share your localhost
 })();
 ```
 
-The `tunnel.url` is the URL assigned to the port of the localhost engine, by default the domain is localhost, all user needs is to apply their port and wait for it to tunnel and server your file to you.
+The `tunnel.url` is the URL assigned to the port of the localhost engine, by default the domain is localhost, all user needs is to apply their port and wait for it to tunnel and serve your file to you.
 
 ## Features
 
