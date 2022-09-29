@@ -1,6 +1,6 @@
 # JOTR
 
-![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/creative-tutorials/tunnel-sharing) [![Discord-Connect](https://img.shields.io/badge/discord-JoinUs-green?logo=discord&style=plastic)](https://discordapp.com) ![License](https://img.shields.io/github/license/creative-tutorials/tunnel-sharing?color=blue) ![GitHub Repo stars](https://img.shields.io/github/stars/creative-tutorials/tunnel-sharing?style=social)
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/creative-tutorials/tunnel-sharing) [![Discord-Connect](https://img.shields.io/badge/discord-JoinUs-green?logo=discord&style=plastic)](https://discord.gg/Zy2BjM5M) ![License](https://img.shields.io/github/license/creative-tutorials/tunnel-sharing?color=blue) ![GitHub Repo stars](https://img.shields.io/github/stars/creative-tutorials/tunnel-sharing?style=social)
 
 Jotr a simple tunnel sharing application that allows you to share your localhost live...
 
