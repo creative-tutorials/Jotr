@@ -8,35 +8,6 @@ Jotr a simple tunnel sharing application that allows you to share your localhost
 
 **JOTR** is a simple application that allows you to share your localhost, live for people to see, this app solves the issue where you want someone to view your app but you don't want to pay for hosting, **JOTR** helps you simply convert your localhost into a secured tunnel that can be viewed live for others to see
 
-## Server code example
-
-```javascript
-(async () => {
-  const aPort = req.body.Port;
-
-  const tunnel = await easyTunnel({ port: aPort });
-
-  // the assigned public url for your tunnel
-  // i.e. https://abcdefgjhij.localtunnel.me
-  let requestedPort = details[details.length - 1].Port;
-  tunnel.url;
-  /**
-   * Returns the URL of the page that the filter is applied to.
-   * @returns {string} The URL of the page that the filter is applied to.
-   */
-  
-  console.log(tunnel.url);
-  requestedPort = tunnel.url;
-  console.log(requestedPort);
-  req.body.domainURL = requestedPort;
-  tunnel.on("close", () => {
-    console.log("tunnel closed");
-  });
-})();
-```
-
-The `tunnel.url` is the URL assigned to the port of the localhost engine, by default the domain is localhost, all user needs is to apply their port and wait for it to tunnel and serve your file to you.
-
 ## Features
 
 - Includes support for different types of requests
@@ -53,6 +24,3 @@ Jotr is built under cool Technologies and we would love to share a quick taste o
 - [Nodejs](https://nodejs.org/en/)
 - [Firebase](https://firebase.google.com/)
 - [MongoDB](https://www.mongodb.com)
-
-
-Copyright &copy; 2022 - [creative-tutorials](https://github.com/creative-tutorials) All rights reserved
